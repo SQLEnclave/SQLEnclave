@@ -600,7 +600,7 @@ public final class Database: CustomStringConvertible, CustomDebugStringConvertib
         self.trace = trace
         
         if options.isEmpty || trace == nil {
-            #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER || os(iOS)
+            #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER || os(iOS)
             sqlite3_trace_v2(sqliteConnection, 0, nil, nil)
             #elseif os(Linux)
             sqlite3_trace(sqliteConnection, nil)
@@ -618,7 +618,7 @@ public final class Database: CustomStringConvertible, CustomDebugStringConvertib
         // http://www.sqlite.org/changes.html#version_3_14
         // It is available from macOS 10.12, tvOS 10.0, watchOS 3.0
         // https://github.com/yapstudios/YapDatabase/wiki/SQLite-version-(bundled-with-OS)
-        #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER || os(iOS)
+        #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER || os(iOS)
         let dbPointer = Unmanaged.passUnretained(self).toOpaque()
         sqlite3_trace_v2(sqliteConnection, UInt32(bitPattern: options.rawValue), { (mask, dbPointer, p, x) in
             let db = Unmanaged<Database>.fromOpaque(dbPointer!).takeUnretainedValue()
@@ -641,7 +641,7 @@ public final class Database: CustomStringConvertible, CustomDebugStringConvertib
         #endif
     }
     
-    #if !(SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER || os(iOS))
+    #if !(SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER || os(iOS))
     private func setupTrace_v1() {
         let dbPointer = Unmanaged.passUnretained(self).toOpaque()
         sqlite3_trace(sqliteConnection, { (dbPointer, sql) in
@@ -680,7 +680,7 @@ public final class Database: CustomStringConvertible, CustomDebugStringConvertib
                         sqlite3_expanded_sql: sqlite3_expanded_sql))
                 let duration = TimeInterval(durationP.pointee) / 1.0e9
                 
-                #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER || os(iOS)
+                #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER || os(iOS)
                 trace(TraceEvent.profile(statement: statement, duration: duration))
                 #elseif os(Linux)
                 #else
@@ -1489,7 +1489,7 @@ extension Database {
         /// See `Database.trace(options:_:)`
         public static let statement = TracingOptions(rawValue: SQLITE_TRACE_STMT)
         
-        #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER || os(iOS)
+        #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER || os(iOS)
         /// Reports executed statements and the estimated duration that the
         /// statement took to run.
         ///
@@ -1520,7 +1520,7 @@ extension Database {
             }
             let impl: Impl
             
-            #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER || os(iOS)
+            #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER || os(iOS)
             /// The executed SQL, where bound parameters are not expanded.
             ///
             /// For example:

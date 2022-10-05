@@ -5,7 +5,7 @@ class DatabaseLogErrorTests: SQLEnclaveTestCase {
     
     func testErrorLog() throws {
         // TODO: understand why this test fails on iOS 13 with system SQLite
-        #if SQLEnclaveCUSTOMSQLITE || SQLITE_HAS_CODEC
+        #if SQL_ENCLAVE_CUSTOMSQLITE || SQLITE_HAS_CODEC
         let dbQueue = try makeDatabaseQueue()
         dbQueue.inDatabase { db in
             _ = try? db.execute(sql: "Abracadabra")

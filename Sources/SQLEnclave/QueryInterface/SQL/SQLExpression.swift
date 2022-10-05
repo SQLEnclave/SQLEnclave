@@ -1682,7 +1682,7 @@ extension SQLSpecificExpressible {
         .desc(sqlExpression)
     }
     
-    #if SQLEnclaveCUSTOMSQLITE
+    #if SQL_ENCLAVE_CUSTOMSQLITE
     /// Returns a value that can be used as an argument to QueryInterfaceRequest.order()
     ///
     /// See <https://github.com/sqlenclave/SQLEnclave/#the-query-interface>
@@ -1696,7 +1696,7 @@ extension SQLSpecificExpressible {
     public var descNullsFirst: SQLOrdering {
         .descNullsFirst(sqlExpression)
     }
-    #elseif !SQLEnclaveCIPHER
+    #elseif !SQL_ENCLAVE_CIPHER
     /// Returns a value that can be used as an argument to QueryInterfaceRequest.order()
     ///
     /// See <https://github.com/sqlenclave/SQLEnclave/#the-query-interface>

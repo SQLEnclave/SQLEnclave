@@ -34,7 +34,7 @@ class ConcurrencyTests: SQLEnclaveTestCase {
 
     func testDeferredTransactionConcurrency() throws {
         let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
             // Work around SQLCipher bug when two connections are open to the
             // same empty database: make sure the database is not empty before
             // running this test
@@ -225,7 +225,7 @@ class ConcurrencyTests: SQLEnclaveTestCase {
 
     func testBusyCallback() throws {
         let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
             // Work around SQLCipher bug when two connections are open to the
             // same empty database: make sure the database is not empty before
             // running this test
@@ -288,7 +288,7 @@ class ConcurrencyTests: SQLEnclaveTestCase {
 
     func testReaderDuringDefaultTransaction() throws {
         let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
             // Work around SQLCipher bug when two connections are open to the
             // same empty database: make sure the database is not empty before
             // running this test
@@ -354,7 +354,7 @@ class ConcurrencyTests: SQLEnclaveTestCase {
 
     func testReaderInDeferredTransactionDuringDefaultTransaction() throws {
         let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
             // Work around SQLCipher bug when two connections are open to the
             // same empty database: make sure the database is not empty before
             // running this test

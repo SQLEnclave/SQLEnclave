@@ -79,7 +79,7 @@ let package = Package(
              ],
              swiftSettings: [
                  .define("SQLITE_HAS_CODEC"),
-                 .define("SQLEnclaveCIPHER"),
+                 .define("SQL_ENCLAVE_CIPHER"),
                  .define("SQLITE_ENABLE_FTS5")
              ]),
         .target(

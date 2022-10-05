@@ -95,7 +95,7 @@ class FTS3TokenizerTests: SQLEnclaveTestCase {
         }
     }
     
-    #if SQLEnclaveCUSTOMSQLITE
+    #if SQL_ENCLAVE_CUSTOMSQLITE
     func testUnicode61TokenizerDiacriticsRemove() throws {
         let dbQueue = try makeDatabaseQueue()
         try dbQueue.inDatabase { db in

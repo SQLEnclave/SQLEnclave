@@ -379,7 +379,7 @@ extension SQLEnclaveTestCase {
         throws
         where Reducer.Value: Equatable
     {
-        #if SQLITE_HAS_CODEC || SQLEnclaveCUSTOMSQLITE
+        #if SQLITE_HAS_CODEC || SQL_ENCLAVE_CUSTOMSQLITE
         // debug SQLite builds can be *very* slow
         let timeout: TimeInterval = 4
         #else
@@ -596,7 +596,7 @@ extension SQLEnclaveTestCase {
         line: UInt)
         throws
     {
-        #if SQLITE_HAS_CODEC || SQLEnclaveCUSTOMSQLITE
+        #if SQLITE_HAS_CODEC || SQL_ENCLAVE_CUSTOMSQLITE
         // debug SQLite builds can be *very* slow
         let timeout: TimeInterval = 2
         #else

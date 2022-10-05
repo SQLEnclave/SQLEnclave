@@ -117,7 +117,7 @@ class FTS5TableBuilderTests: SQLEnclaveTestCase {
         }
     }
 
-    #if SQLEnclaveCUSTOMSQLITE
+    #if SQL_ENCLAVE_CUSTOMSQLITE
     func testUnicode61TokenizerDiacriticsRemove() throws {
         let dbQueue = try makeDatabaseQueue()
         try dbQueue.inDatabase { db in
@@ -128,7 +128,7 @@ class FTS5TableBuilderTests: SQLEnclaveTestCase {
             assertDidExecute(sql: "CREATE VIRTUAL TABLE \"documents\" USING fts5(content, tokenize='unicode61 remove_diacritics 2')")
         }
     }
-    #elseif !SQLEnclaveCIPHER
+    #elseif !SQL_ENCLAVE_CIPHER
     func testUnicode61TokenizerDiacriticsRemove() throws {
         guard #available(OSX 10.16, iOS 14, tvOS 14, watchOS 7, *) else {
             throw XCTSkip()

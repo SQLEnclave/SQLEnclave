@@ -112,7 +112,7 @@ class ColumnInfoTests: SQLEnclaveTestCase {
     }
     
     func testGeneratedColumnInfo() throws {
-        #if !SQLEnclaveCUSTOMSQLITE
+        #if !SQL_ENCLAVE_CUSTOMSQLITE
         throw XCTSkip("Generated columns are not available")
         #else
         let dbQueue = try makeDatabaseQueue()

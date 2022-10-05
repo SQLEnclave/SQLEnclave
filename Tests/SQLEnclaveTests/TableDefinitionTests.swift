@@ -304,7 +304,7 @@ class TableDefinitionTests: SQLEnclaveTestCase {
     }
     
     func testColumnGeneratedAs() throws {
-        #if !SQLEnclaveCUSTOMSQLITE
+        #if !SQL_ENCLAVE_CUSTOMSQLITE
         throw XCTSkip("Generated columns are not available")
         #else
         let dbQueue = try makeDatabaseQueue()
@@ -577,7 +577,7 @@ class TableDefinitionTests: SQLEnclaveTestCase {
         guard sqlite3_libversion_number() >= 3025000 else {
             throw XCTSkip("ALTER TABLE RENAME COLUMN is not available")
         }
-        #if !SQLEnclaveCUSTOMSQLITE && !SQLEnclaveCIPHER
+        #if !SQL_ENCLAVE_CUSTOMSQLITE && !SQL_ENCLAVE_CIPHER
         guard #available(iOS 13.0, tvOS 13.0, watchOS 6.0, *) else {
             throw XCTSkip("ALTER TABLE RENAME COLUMN is not available")
         }
@@ -602,7 +602,7 @@ class TableDefinitionTests: SQLEnclaveTestCase {
     }
     
     func testAlterTableAddGeneratedVirtualColumn() throws {
-        #if !SQLEnclaveCUSTOMSQLITE
+        #if !SQL_ENCLAVE_CUSTOMSQLITE
         throw XCTSkip("Generated columns are not available")
         #else
         let dbQueue = try makeDatabaseQueue()

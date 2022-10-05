@@ -144,10 +144,10 @@ public struct FTS5TokenizerDescriptor {
             break
         case .keep:
             components.append(contentsOf: ["remove_diacritics", "0"])
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         case .remove:
             components.append(contentsOf: ["remove_diacritics", "2"])
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         case .remove:
             components.append(contentsOf: ["remove_diacritics", "2"])
         #endif

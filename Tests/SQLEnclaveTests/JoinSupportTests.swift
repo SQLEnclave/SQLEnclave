@@ -268,7 +268,7 @@ class JoinSupportTests: SQLEnclaveTestCase {
     }
     
     func testNumberOfSelectedColumnsIncludeGeneratedColumns() throws {
-        #if !SQLEnclaveCUSTOMSQLITE
+        #if !SQL_ENCLAVE_CUSTOMSQLITE
         throw XCTSkip("Generated columns are not available")
         #else
         struct T: TableRecord { }

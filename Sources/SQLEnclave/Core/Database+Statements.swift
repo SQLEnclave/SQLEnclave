@@ -659,7 +659,7 @@ struct StatementCache {
         //
         // However SQLITE_PREPARE_PERSISTENT was only introduced in
         // SQLite 3.20.0 http://www.sqlite.org/changes.html#version_3_20
-        #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER
+        #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER
         let statement = try db.makeStatement(sql: sql, prepFlags: SQLITE_PREPARE_PERSISTENT)
         #else
         let statement: Statement

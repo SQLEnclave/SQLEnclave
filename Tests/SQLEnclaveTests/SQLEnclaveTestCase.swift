@@ -114,7 +114,7 @@ class SQLEnclaveTestCase: XCTestCase {
                 self.sqlQueries.append(event.description)
             }
             
-            #if SQLEnclaveCIPHER_USE_ENCRYPTION
+            #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
             try db.usePassphrase("secret")
             #endif
         }

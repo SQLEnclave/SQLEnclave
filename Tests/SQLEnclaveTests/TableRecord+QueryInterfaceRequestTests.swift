@@ -252,14 +252,14 @@ class TableRecordQueryInterfaceRequestTests: SQLEnclaveTestCase {
         XCTAssertEqual(
             sql(dbQueue, Reader.order(abs(Col.age))),
             "SELECT * FROM \"readers\" ORDER BY ABS(\"age\")")
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         XCTAssertEqual(
             sql(dbQueue, Reader.order(Col.age.ascNullsLast)),
             "SELECT * FROM \"readers\" ORDER BY \"age\" ASC NULLS LAST")
         XCTAssertEqual(
             sql(dbQueue, Reader.order(Col.age.descNullsFirst)),
             "SELECT * FROM \"readers\" ORDER BY \"age\" DESC NULLS FIRST")
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         if #available(OSX 10.16, iOS 14, tvOS 14, watchOS 7, *) {
 //            XCTAssertEqual(
 //                sql(dbQueue, Reader.order(Col.age.ascNullsLast)),

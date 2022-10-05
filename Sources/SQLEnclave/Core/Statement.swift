@@ -91,7 +91,7 @@ public final class Statement {
         var sqliteStatement: SQLiteStatement? = nil
         let code: Int32 = database.withAuthorizer(authorizer) {
             // sqlite3_prepare_v3 was introduced in SQLite 3.20.0 http://www.sqlite.org/changes.html#version_3_20
-            #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER
+            #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER
             return sqlite3_prepare_v3(
                 database.sqliteConnection, statementStart, -1, UInt32(bitPattern: prepFlags),
                 &sqliteStatement, statementEnd)

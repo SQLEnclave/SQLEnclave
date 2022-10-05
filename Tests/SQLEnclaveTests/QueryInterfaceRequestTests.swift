@@ -756,14 +756,14 @@ class QueryInterfaceRequestTests: SQLEnclaveTestCase {
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(abs(Col.age))),
             "SELECT * FROM \"readers\" ORDER BY ABS(\"age\")")
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.age.ascNullsLast)),
             "SELECT * FROM \"readers\" ORDER BY \"age\" ASC NULLS LAST")
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.age.descNullsFirst)),
             "SELECT * FROM \"readers\" ORDER BY \"age\" DESC NULLS FIRST")
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         if #available(OSX 10.16, iOS 14, tvOS 14, watchOS 7, *) {
 //            XCTAssertEqual(
 //                sql(dbQueue, tableRequest.order(Col.age.ascNullsLast)),
@@ -786,14 +786,14 @@ class QueryInterfaceRequestTests: SQLEnclaveTestCase {
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.name.collating(collation))),
             "SELECT * FROM \"readers\" ORDER BY \"name\" COLLATE localized_case_insensitive")
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.name.collating(.nocase).ascNullsLast)),
             "SELECT * FROM \"readers\" ORDER BY \"name\" COLLATE NOCASE ASC NULLS LAST")
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.name.collating(.nocase).descNullsFirst)),
             "SELECT * FROM \"readers\" ORDER BY \"name\" COLLATE NOCASE DESC NULLS FIRST")
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         if #available(OSX 10.16, iOS 14, tvOS 14, watchOS 7, *) {
 //            XCTAssertEqual(
 //                sql(dbQueue, tableRequest.order(Col.name.collating(.nocase).ascNullsLast)),
@@ -835,14 +835,14 @@ class QueryInterfaceRequestTests: SQLEnclaveTestCase {
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(abs(Col.age)).reversed()),
             "SELECT * FROM \"readers\" ORDER BY ABS(\"age\") DESC")
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.age.descNullsFirst).reversed()),
             "SELECT * FROM \"readers\" ORDER BY \"age\" ASC NULLS LAST")
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.age.ascNullsLast).reversed()),
             "SELECT * FROM \"readers\" ORDER BY \"age\" DESC NULLS FIRST")
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         if #available(OSX 10.16, iOS 14, tvOS 14, watchOS 7, *) {
 //            XCTAssertEqual(
 //                sql(dbQueue, tableRequest.order(Col.age.descNullsFirst).reversed()),
@@ -865,14 +865,14 @@ class QueryInterfaceRequestTests: SQLEnclaveTestCase {
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.name.collating(collation)).reversed()),
             "SELECT * FROM \"readers\" ORDER BY \"name\" COLLATE localized_case_insensitive DESC")
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.name.collating(.nocase).ascNullsLast).reversed()),
             "SELECT * FROM \"readers\" ORDER BY \"name\" COLLATE NOCASE DESC NULLS FIRST")
         XCTAssertEqual(
             sql(dbQueue, tableRequest.order(Col.name.collating(.nocase).descNullsFirst).reversed()),
             "SELECT * FROM \"readers\" ORDER BY \"name\" COLLATE NOCASE ASC NULLS LAST")
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         if #available(OSX 10.16, iOS 14, tvOS 14, watchOS 7, *) {
 //            XCTAssertEqual(
 //                sql(dbQueue, tableRequest.order(Col.name.collating(.nocase).ascNullsLast).reversed()),

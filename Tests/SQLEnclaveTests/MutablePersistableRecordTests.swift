@@ -711,7 +711,7 @@ class MutablePersistableRecordTests: SQLEnclaveTestCase {
     }
     
     func testGeneratedColumnsInsertIsAnError() throws {
-        #if !SQLEnclaveCUSTOMSQLITE
+        #if !SQL_ENCLAVE_CUSTOMSQLITE
         throw XCTSkip("Generated columns are not available")
         #else
         struct T: MutablePersistableRecord {
@@ -737,7 +737,7 @@ class MutablePersistableRecordTests: SQLEnclaveTestCase {
     }
     
     func testGeneratedColumnsUpdateIsAnError() throws {
-        #if !SQLEnclaveCUSTOMSQLITE
+        #if !SQL_ENCLAVE_CUSTOMSQLITE
         throw XCTSkip("Generated columns are not available")
         #else
         struct T: MutablePersistableRecord {

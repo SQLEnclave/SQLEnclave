@@ -330,7 +330,7 @@ extension DatabaseWriter {
     // This method is declared on DatabaseWriter instead of DatabaseReader,
     // so that it is not available on DatabaseSnaphot. VACUUM INTO is not
     // available inside the transaction that is kept open by DatabaseSnaphot.
-    #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER
+    #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER
     /// Creates a new database file at the specified path with a minimum
     /// amount of disk space.
     ///

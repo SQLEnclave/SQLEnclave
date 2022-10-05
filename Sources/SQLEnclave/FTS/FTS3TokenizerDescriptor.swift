@@ -68,10 +68,10 @@ public struct FTS3TokenizerDescriptor {
             break
         case .keep:
             arguments.append("remove_diacritics=0")
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         case .remove:
             arguments.append("remove_diacritics=2")
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         case .remove:
             arguments.append("remove_diacritics=2")
         #endif

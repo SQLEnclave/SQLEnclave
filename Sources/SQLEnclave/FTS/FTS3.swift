@@ -16,12 +16,12 @@ public struct FTS3: VirtualTableModule {
         /// Remove diacritics from Latin script characters. This
         /// option matches the raw "remove_diacritics=1" tokenizer argument.
         case removeLegacy
-        #if SQLEnclaveCUSTOMSQLITE
+        #if SQL_ENCLAVE_CUSTOMSQLITE
         /// Remove diacritics from Latin script characters. This
         /// option matches the raw "remove_diacritics=2" tokenizer argument,
         /// available from SQLite 3.27.0
         case remove
-        #elseif !SQLEnclaveCIPHER
+        #elseif !SQL_ENCLAVE_CIPHER
         /// Remove diacritics from Latin script characters. This
         /// option matches the raw "remove_diacritics=2" tokenizer argument,
         /// available from SQLite 3.27.0

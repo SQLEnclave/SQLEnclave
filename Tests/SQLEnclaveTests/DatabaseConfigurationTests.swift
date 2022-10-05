@@ -152,7 +152,7 @@ class DatabaseConfigurationTests: SQLEnclaveTestCase {
     
     func testBusyModeImmediate() throws {
         let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
         // Work around SQLCipher bug when two connections are open to the
         // same empty database: make sure the database is not empty before
         // running this test
@@ -202,7 +202,7 @@ class DatabaseConfigurationTests: SQLEnclaveTestCase {
     // TODO: fix flaky test
 //    func testBusyModeTimeoutTooShort() throws {
 //        let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-//        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+//        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
 //        // Work around SQLCipher bug when two connections are open to the
 //        // same empty database: make sure the database is not empty before
 //        // running this test
@@ -252,7 +252,7 @@ class DatabaseConfigurationTests: SQLEnclaveTestCase {
     // TODO: fix flaky test. It fails on Xcode 10.0, tvOS 10.0
 //    func testBusyModeTimeoutTooLong() throws {
 //        let dbQueue1 = try makeDatabaseQueue(filename: "test.sqlite")
-//        #if SQLEnclaveCIPHER_USE_ENCRYPTION
+//        #if SQL_ENCLAVE_CIPHER_USE_ENCRYPTION
 //        // Work around SQLCipher bug when two connections are open to the
 //        // same empty database: make sure the database is not empty before
 //        // running this test

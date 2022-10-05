@@ -631,7 +631,7 @@ public final class TableAlteration {
         alterations.append(.addColumnLiteral(literal))
     }
     
-    #if SQLEnclaveCUSTOMSQLITE || SQLEnclaveCIPHER
+    #if SQL_ENCLAVE_CUSTOMSQLITE || SQL_ENCLAVE_CIPHER
     /// Renames a column in a table.
     ///
     ///     try db.alter(table: "player") { t in
@@ -942,7 +942,7 @@ public final class ColumnDefinition {
         return self
     }
     
-    #if SQLEnclaveCUSTOMSQLITE
+    #if SQL_ENCLAVE_CUSTOMSQLITE
     /// Defines the column as a generated column.
     ///
     ///     try db.create(table: "player") { t in
