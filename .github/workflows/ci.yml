@@ -71,7 +71,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test (Debug)
         run: swift test -v --configuration debug
-       name: Test (Release)
+      - name: Test (Release)
         run: swift test -v --configuration release -Xswiftc -enable-testing
 
   api-doc:
