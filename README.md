@@ -44,15 +44,21 @@ Browse the [API Documentation].
 
 1. What cryptography libraries does SQLEnclave use?
 
-SQLCipher (and therefore also SQLEnclave) uses CommonCrypto on Darwin platforms and OpenSSL on Linux to implement cryptography features.
+    SQLCipher (and therefore also SQLEnclave) uses CommonCrypto on Darwin platforms and OpenSSL on Linux to implement cryptography features.
 
 1. Is SQLEnclave compatible with SQLite?
 
-SQLEnclave embeds SQLite itself, and so it can interact seamlessly with `.sqlite3` databases created with other apps. Note, however, that an encrypted enclave will no longer be readable 
+    SQLEnclave embeds SQLite itself, and so it can interact seamlessly with `.sqlite3` databases created with other apps. Note, however, that an encrypted `.enclave` database will not be readable by most `sqlite3` executables found on other platforms.
+
+1. How does SQLEnclave compare with the built-in SQLite framework on iOS?
+
+    The version of SQLite that ships with Darwin platforms does not have any encryption capabilities. Other than that, the two frameworks are identical.
+
+    SQLEnclave will run slower in Debug mode than the built-in SQLite module, but in Release mode the performance of unencrypted operations should be comparable. 
 
 1. Can I trust the format of the SQLite database for long-term data storage?
 
-SQLite is one of four formats (along with XML, JSON, and CSV) recommended for [long-term storage of datasets](https://www.sqlite.org/locrsf.html) by the United States Library of Congress.
+    SQLite is one of four formats (along with XML, JSON, and CSV) recommended for [long-term storage of datasets](https://www.sqlite.org/locrsf.html) by the United States Library of Congress.
 
 
 
