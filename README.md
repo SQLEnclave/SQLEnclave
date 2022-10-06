@@ -36,7 +36,7 @@ SQL Enclave is mostly a re-packaging of multiple independent projects:
  - [SQLite][]: the ubiquitous embedded SQL database
  - [SQLCipher][]: 256 bit AES encryption for SQLite databases
  - [GRDB][] and [GRDBQuery][]: Swift bindings for SQLite
- - [DDG GRDB][https://github.com/duckduckgo/GRDB.swift]: GRDB fork with SQLCipher support
+ - [DDG GRDB](https://github.com/duckduckgo/GRDB.swift): GRDB fork with SQLCipher support
  
 Browse the [API Documentation].
 
