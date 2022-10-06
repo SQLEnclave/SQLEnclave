@@ -9,7 +9,16 @@ SQLEnclave can be included in your project with:
 
 ```
 
-## Example
+## Encryption
+
+SQLEnclave databases feature:
+
+ - Fast performance with as little as 5-15% overhead for encryption on many operations
+ - complete file-level encryption (`.enclave` files are opaque blobs)
+ - CBC mode, HMAC, key derivation
+ - Zero-configuration and application level cryptography
+ - Configurable crypto providers
+
 
 ### Connecting to an encrypted database
 
