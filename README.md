@@ -33,10 +33,9 @@ SQLEnclave can be included in your project with:
 
 SQL Enclave is mostly a re-packaging of multiple independent projects:
 
- - [SQLite][] by D. Richard Hipp: the ubiquitous embedded SQL database
- - [SQLCipher][] by : patches to SQLite and [GRDB][] ([contributed by DuckDuckGo](https://github.com/duckduckgo/GRDB.swift)) to integrate the SQLCipher encryption suite
- - [GRDBQuery][] by Gwendal Roué: Swift bindings for SQLite
- - A bit of jiggery-pokery to get Linux passing
+ - [SQLite][]: the ubiquitous embedded SQL database
+ - [SQLCipher][]: patches to SQLite and [GRDB][] ([contributed by DuckDuckGo](https://github.com/duckduckgo/GRDB.swift)) to integrate the SQLCipher encryption suite
+ - [GRDB][] and [GRDBQuery][]: Swift bindings for SQLite
  
 Browse the [API Documentation].
 
@@ -48,7 +47,9 @@ Browse the [API Documentation].
 
 1. Is SQLEnclave compatible with SQLite?
 
-    SQLEnclave embeds SQLite itself, and so it can interact seamlessly with `.sqlite3` databases created with other apps. Note, however, that an encrypted `.enclave` database will not be readable by most `sqlite3` executables found on other platforms.
+    SQLEnclave is compatible with standard SQLite databases. When a key is not provided, SQLEnclave will behave just like the standard SQLite library. It is also possible to convert from a plaintext database (standard SQLite) to an encrypted SQLCipher database using ATTACH and the sqlcipher_export() convenience function.
+
+    Note, however, that an encrypted database will not be readable by most `sqlite3` executables found on other platforms.
 
 1. How does SQLEnclave compare with the built-in SQLite framework on iOS?
 
@@ -73,7 +74,7 @@ Browse the [API Documentation].
 
 [Swift]: https://swift.org/
 [SQLite]: https://sqlite.org/
-[SQLCipher]: https://www.zetetic.net/sqlcipher/
+[SQLCipher]: https://github.com/sqlcipher/sqlcipher
 [GRDB]: https://github.com/groue/GRDB.swift
 [GRDBQuery]: https://github.com/groue/GRDBQuery
 
