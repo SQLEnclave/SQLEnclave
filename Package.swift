@@ -85,7 +85,7 @@ let package = Package(
         .target(
              name: "SQLCipher",
              cSettings: [
-                 .unsafeFlags(["-Wno-conversion"]),
+                 // .unsafeFlags(["-Wno-conversion"]), // causes: error: the target 'SQLCipher' in product 'SQLEnclave' contains unsafe build flags
                  .define("NDEBUG"),
                  .define("SQLITE_HAS_CODEC"),
                  .define("SQLITE_TEMP_STORE", to: "2"),
