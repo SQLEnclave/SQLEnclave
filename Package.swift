@@ -52,7 +52,7 @@ let package = Package(
             name: "SQLEnclave",
             dependencies: [
                 "SQLCipher",
-		Platform.current == .linux ? "OpenSSL" : nil,
+                Platform.current == .linux ? "OpenSSL" : nil,
                 hasCombine ? nil : .product(name: "OpenCombineShim", package: "OpenCombine"),
             ].compactMap({ $0 }),
             resources: [.process("Resources")],
@@ -85,6 +85,7 @@ let package = Package(
         .target(
              name: "SQLCipher",
              cSettings: [
+                 .unsafeFlags(["-Wno-conversion"]),
                  .define("NDEBUG"),
                  .define("SQLITE_HAS_CODEC"),
                  .define("SQLITE_TEMP_STORE", to: "2"),
@@ -114,5 +115,7 @@ let package = Package(
             dependencies: ["SQLEnclave"],
             path: "Tests")
     ],
-    swiftLanguageVersions: [.v5]
+    swiftLanguageVersions: [.v5],
+    cLanguageStandard: CLanguageStandard.gnu11,
+    cxxLanguageStandard: .cxx14
 )

@@ -66,10 +66,11 @@ Browse the [API Documentation].
     The version of SQLite that ships with Darwin platforms does not have any encryption capabilities. Other than that, the two frameworks are identical.
 
     SQLEnclave will run slower in Debug mode than the built-in SQLite module, but in Release mode the performance of unencrypted operations should be comparable. 
+    Encrypted operations will, naturally, be slower. Profiling has shown an average slowdown of encrypted operations by around 10–20%.
 
-1. Can I trust the format of the SQLite database for long-term data storage?
+1. Can I trust the format of the SQLEnclave/SQLite database for long-term data storage?
 
-    SQLite is one of four formats (along with XML, JSON, and CSV) recommended for [long-term storage of datasets](https://www.sqlite.org/locrsf.html) by the United States Library of Congress.
+    SQLEnclave databases are simply encrypted SQLite databases, and SQLite is one of four formats (along with XML, JSON, and CSV) recommended for [long-term storage of datasets](https://www.sqlite.org/locrsf.html) by the United States Library of Congress.
 
 
 
