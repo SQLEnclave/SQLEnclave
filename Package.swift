@@ -85,7 +85,7 @@ let package = Package(
         .target(
              name: "SQLCipher",
              cSettings: [
-                 // .unsafeFlags(["-Wno-conversion"]), // causes: error: the target 'SQLCipher' in product 'SQLEnclave' contains unsafe build flags
+                 // .unsafeFlags(["-Wno-conversion"]), // causes: "error: the target 'SQLCipher' in product 'SQLEnclave' contains unsafe build flags" so we add the following to sqlite.c instead: #pragma clang diagnostic ignored "-Wconversion"
                  .define("NDEBUG"),
                  .define("SQLITE_HAS_CODEC"),
                  .define("SQLITE_TEMP_STORE", to: "2"),

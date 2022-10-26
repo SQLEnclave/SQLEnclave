@@ -33,7 +33,7 @@ jobs:
               -configuration Debug \
               -scheme "SQLEnclave" \
               -sdk "iphonesimulator" \
-              -destination "platform=iOS Simulator,name=iPhone 13" \
+              -destination "platform=iOS Simulator,name=iPhone 14" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
       - name: Test (Release)
         run: |
@@ -41,7 +41,7 @@ jobs:
               -configuration Release \
               -scheme "SQLEnclave" \
               -sdk "iphonesimulator" \
-              -destination "platform=iOS Simulator,name=iPhone 13" \
+              -destination "platform=iOS Simulator,name=iPhone 14" \
               ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
 
   tvos:
