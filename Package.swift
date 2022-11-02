@@ -10,12 +10,14 @@ extension Platform {
 	static let current: Platform = .tvOS
 #elseif os(watchOS)
 	static let current: Platform = .watchOS
+#elseif os(Android)
+	static let current: Platform = .android
 #elseif os(Linux)
 	static let current: Platform = .linux
 #elseif os(Windows)
 	static let current: Platform = .windows
 #else
-#error("Unsupported platform.")
+    #error("Unsupported platform.")
 #endif
 }
 
