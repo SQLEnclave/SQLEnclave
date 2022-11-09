@@ -54,7 +54,7 @@ let package = Package(
             name: "SQLEnclave",
             dependencies: [
                 "SQLCipher",
-                Platform.current == .linux ? "OpenSSL" : nil,
+                Platform.current == .linux || Platform.current == .android ? "OpenSSL" : nil,
                 hasCombine ? nil : .product(name: "OpenCombineShim", package: "OpenCombine"),
             ].compactMap({ $0 }),
             resources: [.process("Resources")],
@@ -105,7 +105,7 @@ let package = Package(
                  .define("SQLITE_ENABLE_UNLOCK_NOTIFY"),
                  .define("SQLITE_ENABLE_JSON1"),
                  .define("SQLITE_ENABLE_FTS5"),
-                 .define(Platform.current == .linux ? "SQLCIPHER_CRYPTO_OPENSSL" : "SQLCIPHER_CRYPTO_CC"),
+                 .define(Platform.current == .linux || Platform.current == .android ? "SQLCIPHER_CRYPTO_OPENSSL" : "SQLCIPHER_CRYPTO_CC"),
                  //.define("LDFLAGS", to: "/usr/lib/x86_64-linux-gnu/libcrypto.a"),
                  .define("HAVE_USLEEP", to: "1"),
                  .define("SQLITE_MAX_VARIABLE_NUMBER", to: "99999"),
