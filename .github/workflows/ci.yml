@@ -19,9 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: swift test -v --configuration debug
+        run: swift test -v --configuration debug --parallel
       - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing
+        run: swift test -v --configuration release -Xswiftc -enable-testing --parallel
 
   ios:
     runs-on: macos-12
@@ -70,9 +70,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Test (Debug)
-        run: swift test -v --configuration debug
+        run: swift test -v --configuration debug --parallel
       - name: Test (Release)
-        run: swift test -v --configuration release -Xswiftc -enable-testing
+        run: swift test -v --configuration release -Xswiftc -enable-testing --parallel
 
   api-doc:
     runs-on: macos-12 # needed to be able to document SwiftUI
@@ -95,10 +95,28 @@ jobs:
             --hosting-base-path SQLEnclave \
             --output-path docs
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: '.'
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v2
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./docs
+
+  # Deployment job (which must be in a separate job)
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    needs: api-doc
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
 
